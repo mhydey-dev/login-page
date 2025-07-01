@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="loginpage.css" />
+    <script
+      src="https://kit.fontawesome.com/9e2da3867b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <div class="top-img">
+        <img src="admin-icon-vector-removebg-preview.png" alt="" />
+      </div>
+      <div class="inputs">
+        <div class="first">
+          <i class="fa-solid fa-user" style="color: #ffffff"></i>
+          <input
+            type="text"
+            class="first-input"
+            placeholder="Username"
+            id="usernameInput"
+          />
+        </div>
+        <div class="second">
+          <i class="fa-solid fa-lock" style="color: #ffffff"></i>
+          <input
+            type="password"
+            class="second-input"
+            placeholder="Password"
+            id="passwordInput"
+          />
+        </div>
+        <div class="second">
+          <i class="fa-solid fa-lock-open" style="color: #ffffff"></i>
+          <input
+            type="password"
+            class="second-input"
+            placeholder="Confirm-password"
+            id="confirmPasswordInput"
+          />
+        </div>
+        <button class="btn" onclick="login()">SIGN IN</button>
+      </div>
+    </main>
+  </body>
+</html>
+<script>
+  const users = [];
+  const usernameInput = document.getElementById("usernameInput");
+  const passwordInput = document.getElementById("passwordInput");
+  const confirmPasswordInput = document.getElementById("confirmPasswordInput");
+
+  function login() {
+    const usernameInputValue = usernameInput.value.toLowerCase();
+    const passwordInputValue = passwordInput.value.trim();
+    const confirmPasswordInputValue = confirmPasswordInput.value.trim();
+    if (!usernameInputValue) {
+      alert("Username is mandatory");
+      return;
+    }
+
+    if (!passwordInputValue || !confirmPasswordInputValue) {
+      alert("password is mandatory");
+      return;
+    }
+    if (passwordInputValue !== confirmPasswordInputValue) {
+      alert("Passwords do not match");
+      return;
+    } else {
+      alert(`Thanks for signing up ${usernameInputValue}`);
+    }
+    localStorage.setItem("username", usernameInputValue);
+    localStorage.setItem("password", passwordInputValue);
+  }
+</script>
